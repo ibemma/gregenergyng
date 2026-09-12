@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#141414">
+<title>Greg Energy Limited — Procurement &amp; Supply</title>
+<meta name="description" content="Greg Energy Limited sources and supplies equipment for industrial, oil &amp; gas and construction sites — plus logistics, field support and general contracting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C1272D;
+    --red-light:#E14A50;
+    --red-dark:#8f1c21;
+    --charcoal:#1A1A1A;
+    --steel:#A7A9AC;
+    --white:#FFFFFF;
+    --max:1240px;
+    --gap:clamp(1.5rem,3vw,3rem);
+    --ease:cubic-bezier(.22,.85,.32,1);
+  }
+
+  /* ---- Dark theme (default) ---- */
+  html[data-theme="dark"]{
+    --bg:#141414; --bg-elevated:#1c1c1c; --bg-deep:#0e0e0e;
+    --text:#F2F1EF; --text-muted:#A7A9AC; --text-faint:#7c7d7f;
+    --border:#2d2d2d; --surface:#1a1a1a; --surface-hover:#222222;
+    --nav-bg:rgba(20,20,20,0.82);
+    --shadow:0 18px 40px -18px rgba(0,0,0,0.6);
+    --input-bg:#1c1c1c;
+  }
+  /* ---- Light theme ---- */
+  html[data-theme="light"]{
+    --bg:#FFFFFF; --bg-elevated:#F4F4F3; --bg-deep:#1A1A1A;
+    --text:#151515; --text-muted:#57585a; --text-faint:#8a8b8d;
+    --border:#E7E7E8; --surface:#FFFFFF; --surface-hover:#F7F7F6;
+    --nav-bg:rgba(255,255,255,0.88);
+    --shadow:0 18px 40px -18px rgba(20,20,20,0.16);
+    --input-bg:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Open Sans',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.65;overflow-x:hidden;transition:background 0.35s var(--ease), color 0.35s var(--ease);}
+  body.menu-open{overflow:hidden;}
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;margin:0;color:var(--text);letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,2.75rem);}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  ::selection{background:var(--red);color:#fff;}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}}
+
+  /* ============ HEADER ============ */
+  /* The header follows the page theme (dark bg in dark mode, white in light mode) — it does not force one fixed color. */
+  header{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);border-top:3px solid var(--red);transition:background 0.35s var(--ease), border-color 0.35s var(--ease);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:0.65rem clamp(1.25rem,4vw,2.75rem);max-width:var(--max);margin:0 auto;gap:1rem;}
+  .brand{display:flex;align-items:center;gap:0.85rem;}
+  /* The logo file itself never changes. In dark mode its black wordmark needs a light plate behind it to stay legible —
+     that plate is a presentation choice for contrast, not an edit to the logo image. In light mode no plate is needed. */
+  .logo-plate{display:flex;align-items:center;flex:none;transition:background 0.3s var(--ease), padding 0.3s var(--ease);}
+  html[data-theme="dark"] .logo-plate{background:#fff;padding:8px 14px;box-shadow:0 6px 18px rgba(0,0,0,0.35);}
+  .brand .logo-mark{height:52px;width:auto;object-fit:contain;display:block;}
+  .brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.16rem;color:var(--text);line-height:1.15;}
+  .brand-text span{display:block;font-family:'Open Sans',sans-serif;font-weight:600;font-size:0.66rem;color:var(--text-muted);letter-spacing:0.07em;margin-top:3px;}
+  .nav-right{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
+  .theme-label{font-size:0.76rem;font-weight:700;color:var(--text-muted);letter-spacing:0.02em;}
+  .nav-links{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2rem);}
+  .nav-links a{font-size:0.89rem;font-weight:600;color:var(--text-muted);position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
+  .nav-links a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--red);transition:width 0.3s var(--ease), left 0.3s var(--ease);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a:hover::after{width:100%;left:0;}
+
+  /* Theme toggle switch */
+  .theme-toggle{
+    position:relative;width:52px;height:28px;border-radius:999px;
+    background:var(--bg-elevated);border:1px solid var(--border);
+    display:inline-flex;align-items:center;padding:2px;flex:none;
+    transition:background 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .theme-toggle .knob{
+    width:22px;height:22px;border-radius:50%;background:var(--red);
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    transform:translateX(0);transition:transform 0.32s var(--ease), background 0.3s var(--ease);
+  }
+  html[data-theme="light"] .theme-toggle .knob{transform:translateX(24px);}
+  .theme-toggle svg{width:13px;height:13px;}
+
+  /* Buttons — refined system */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+    padding:0.8rem 1.6rem;font-weight:700;font-size:0.87rem;letter-spacing:0.01em;
+    border:1.5px solid transparent;white-space:nowrap;position:relative;
+    transition:transform 0.28s var(--ease), box-shadow 0.28s var(--ease), background 0.28s var(--ease), border-color 0.28s var(--ease), color 0.28s var(--ease);
+  }
+  .btn-primary{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 8px 20px -8px rgba(193,39,45,0.55);}
+  .btn-primary:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(193,39,45,0.65);}
+  .btn-primary:active{transform:translateY(0);box-shadow:0 6px 14px -8px rgba(193,39,45,0.5);}
+
+  .btn-outline{background:transparent;color:var(--text);border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--text);background:var(--surface-hover);transform:translateY(-2px);}
+  .btn-outline:active{transform:translateY(0);}
+
+  .btn-outline-light{background:rgba(255,255,255,0.06);color:#fff;border-color:rgba(255,255,255,0.4);}
+  .btn-outline-light:hover{background:#fff;color:var(--charcoal);border-color:#fff;transform:translateY(-2px);}
+
+  .btn-ghost{background:transparent;color:var(--text-muted);border-color:transparent;padding:0.8rem 0.2rem;}
+  .btn-ghost:hover{color:var(--red);}
+
+  .menu-toggle{display:none;background:none;border:none;padding:0.6rem;min-width:44px;min-height:44px;}
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--h-text);margin:5px 0;transition:transform 0.25s var(--ease), opacity 0.25s var(--ease);}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:min(90vh,780px);display:flex;align-items:flex-end;overflow:hidden;background:var(--bg-deep);}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:kenburns 26s ease-in-out infinite alternate;}
+  @keyframes kenburns{from{transform:scale(1);}to{transform:scale(1.09);}}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.68) 40%, rgba(8,8,8,0.28) 70%, rgba(8,8,8,0.08) 100%);}
+  .hero-content{position:relative;z-index:2;padding:clamp(3rem,8vw,5rem) 0 clamp(2.4rem,6vw,3.6rem);width:100%;}
+  .eyebrow{display:inline-flex;align-items:center;gap:0.5rem;color:#f0a6a9;font-size:0.82rem;font-weight:700;margin-bottom:1.1rem;}
+  .eyebrow::before{content:"";width:7px;height:7px;background:var(--red);border-radius:50%;}
+  .hero-content h1{color:#fff;font-size:clamp(2rem,4.4vw,3.4rem);font-weight:800;line-height:1.12;max-width:16ch;}
+  .hero-content p.lede{color:#d8d8d8;font-size:1.06rem;max-width:50ch;margin-top:1.2rem;}
+  .hero-ctas{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;}
+
+  .hero-card{
+    position:relative;z-index:3;background:var(--surface);
+    max-width:var(--max);margin:0 auto;border:1px solid var(--border);
+    transform:translateY(50%);display:grid;grid-template-columns:repeat(4,1fr);
+    box-shadow:var(--shadow);
+  }
+  .hero-card > div{padding:1.5rem clamp(1rem,2.5vw,1.8rem);border-right:1px solid var(--border);transition:background 0.25s var(--ease);}
+  .hero-card > div:hover{background:var(--surface-hover);}
+  .hero-card > div:last-child{border-right:none;}
+  .hero-card strong{display:block;font-family:'Montserrat',sans-serif;font-weight:800;color:var(--text);font-size:0.96rem;margin-bottom:0.3rem;}
+  .hero-card span{color:var(--text-muted);font-size:0.82rem;}
+  .hero-spacer{height:clamp(2.6rem,7vw,4.4rem);background:var(--bg);}
+
+  /* ============ SECTIONS ============ */
+  section{padding:clamp(3.6rem,8vw,6.2rem) 0;}
+  .section-head{display:grid;grid-template-columns:0.8fr 1.2fr;gap:var(--gap);margin-bottom:clamp(2.2rem,5vw,3.4rem);align-items:end;border-bottom:2px solid var(--border);padding-bottom:1.3rem;}
+  .section-head h2{font-size:clamp(1.6rem,2.8vw,2.3rem);}
+  .section-head .lede{color:var(--text-muted);font-size:1rem;max-width:54ch;}
+  .kicker{font-weight:700;color:var(--red);font-size:0.83rem;display:block;margin-bottom:0.5rem;}
+
+  .section-alt{background:var(--bg-elevated);}
+
+  /* Positioning */
+  .positioning .wrap{max-width:920px;}
+  .positioning p.big{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.3rem,2.6vw,1.95rem);line-height:1.38;color:var(--text);}
+  .positioning p.big em{font-style:normal;color:var(--red);}
+  .positioning p.sub{margin-top:1.3rem;color:var(--text-muted);font-size:1.03rem;max-width:66ch;}
+
+  /* Procurement */
+  .cat-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--gap);align-items:stretch;}
+  .cat-copy p{color:var(--text-muted);font-size:1rem;margin-bottom:1.2rem;max-width:54ch;}
+  .cat-items{display:grid;gap:0;margin-top:1.6rem;}
+  .cat-item{display:flex;gap:1.1rem;padding:1.2rem 0.4rem;border-top:1px solid var(--border);align-items:flex-start;transition:padding-left 0.3s var(--ease), background 0.3s var(--ease);}
+  .cat-item:last-child{border-bottom:1px solid var(--border);}
+  .cat-item:hover{padding-left:0.9rem;background:var(--bg-elevated);}
+  .cat-item .mark{flex:none;width:9px;height:9px;margin-top:0.5rem;background:var(--red);transition:transform 0.3s var(--ease);}
+  .cat-item:hover .mark{transform:scale(1.5);}
+  .cat-item div h4{font-size:1.03rem;margin-bottom:0.25rem;}
+  .cat-item div p{color:var(--text-muted);font-size:0.92rem;}
+  .cat-item.more{border-top:1px dashed var(--border);}
+  .cat-item.more .mark{background:transparent;border:1.5px solid var(--red);}
+
+  .cat-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.6rem;}
+  .cat-photos figure{margin:0;overflow:hidden;position:relative;border:1px solid var(--border);}
+  .cat-photos img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease);}
+  .cat-photos figure:hover img{transform:scale(1.08);}
+  .cat-photos figure.tall{grid-row:span 2;}
+  .cat-photos figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg, rgba(0,0,0,0.72), transparent);color:#fff;font-size:0.72rem;font-weight:700;padding:0.7rem 0.75rem 0.55rem;transform:translateY(4px);opacity:0.88;transition:transform 0.35s var(--ease), opacity 0.35s var(--ease);}
+  .cat-photos figure:hover figcaption{transform:translateY(0);opacity:1;}
+
+  /* Services strip */
+  .services-list{display:grid;gap:0;}
+  .service-row{display:grid;grid-template-columns:0.9fr 1.4fr;gap:var(--gap);padding:0;border-bottom:1px solid var(--border);align-items:stretch;}
+  .service-row:first-child{border-top:1px solid var(--border);}
+  .service-photo{position:relative;min-height:230px;overflow:hidden;}
+  .service-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 0.7s var(--ease);}
+  .service-row:hover .service-photo img{transform:scale(1.06);}
+  .service-text{padding:2.1rem 0;display:flex;flex-direction:column;justify-content:center;gap:0.75rem;}
+  .service-text h3{font-size:1.28rem;transition:color 0.25s var(--ease);}
+  .service-row:hover .service-text h3{color:var(--red);}
+  .service-text p{color:var(--text-muted);max-width:56ch;}
+  .service-text .tag{display:inline-flex;align-items:center;margin-top:0.5rem;font-size:0.76rem;font-weight:700;color:var(--red);border:1px solid var(--red);padding:0.25rem 0.65rem;width:fit-content;transition:background 0.25s var(--ease), color 0.25s var(--ease);}
+  .service-row:hover .tag{background:var(--red);color:#fff;}
+  @media (min-width:901px){
+    .service-row:nth-child(even){grid-template-columns:1.4fr 0.9fr;}
+    .service-row:nth-child(even) .service-photo{order:2;}
+  }
+
+  /* Process */
+  .process{background:var(--bg-deep);color:#fff;}
+  .process .section-head{border-bottom-color:#333;}
+  .process .section-head h2, .process .kicker{color:#fff;}
+  .process .kicker{color:#ff8b8f;}
+  .process .lede{color:#a7a7a7;}
+  .process-track{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;position:relative;}
+  .process-track::before{content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:rgba(255,255,255,0.14);}
+  .step{position:relative;padding-top:3.5rem;}
+  .step .dot{position:absolute;top:0;left:0;width:44px;height:44px;border:2px solid var(--red);background:var(--bg-deep);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;transition:background 0.3s var(--ease), transform 0.3s var(--ease);}
+  .step:hover .dot{background:var(--red);transform:scale(1.08);}
+  .step h4{color:#fff;font-size:1rem;margin-bottom:0.5rem;}
+  .step p{color:#a7a7a7;font-size:0.9rem;}
+
+  /* Why us */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+  .why-card{background:var(--surface);padding:2.1rem 1.7rem;transition:background 0.3s var(--ease), transform 0.3s var(--ease);position:relative;}
+  .why-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.35s var(--ease);}
+  .why-card:hover{background:var(--surface-hover);transform:translateY(-4px);}
+  .why-card:hover::before{transform:scaleX(1);}
+  .why-card svg{margin-bottom:1.2rem;}
+  .why-card h3{font-size:1.03rem;margin-bottom:0.6rem;}
+  .why-card p{color:var(--text-muted);font-size:0.9rem;}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--gap);}
+  .contact-info{display:flex;flex-direction:column;gap:1.5rem;}
+  .info-block h4{font-size:0.84rem;color:var(--red);font-weight:700;margin-bottom:0.4rem;}
+  .info-block p{color:var(--text);font-size:0.98rem;}
+  .info-block a{border-bottom:1px solid var(--border);transition:border-color 0.25s var(--ease), color 0.25s var(--ease);}
+  .info-block a:hover{color:var(--red);border-color:var(--red);}
+  .contact-form{background:var(--surface);border:1px solid var(--border);padding:clamp(1.7rem,3vw,2.5rem);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .field{margin-bottom:1.15rem;display:flex;flex-direction:column;gap:0.4rem;}
+  .field label{font-size:0.82rem;font-weight:700;color:var(--text);}
+  .field input,.field select,.field textarea{border:1px solid var(--border);background:var(--input-bg);padding:0.78rem 0.9rem;font-family:inherit;font-size:16px;color:var(--text);width:100%;transition:border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);}
+  .field textarea{resize:vertical;min-height:110px;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(193,39,45,0.15);outline:none;}
+  .field select{cursor:pointer;}
+
+  /* Footer */
+  footer{background:var(--bg-deep);color:var(--steel);padding:3.2rem 0 1.6rem;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 0.8fr 0.8fr 1fr;gap:var(--gap);padding-bottom:2.4rem;border-bottom:1px solid #2a2a2a;}
+  .footer-brand{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem;}
+  .footer-brand .logo-chip{width:46px;height:46px;box-shadow:none;}
+  .footer-brand img{height:100%;width:100%;object-fit:contain;}
+  .footer-brand span{font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.02rem;}
+  footer h5{color:#fff;font-size:0.85rem;font-weight:700;margin-bottom:1rem;}
+  footer ul li{margin-bottom:0.65rem;font-size:0.9rem;}
+  footer ul li a{transition:color 0.25s var(--ease), padding-left 0.25s var(--ease);display:inline-block;}
+  footer ul li a:hover{color:#fff;padding-left:4px;}
+  .foot-bottom{padding-top:1.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;font-size:0.82rem;}
+
+  .mobile-cta{display:none;}
+
+  @media (max-width:900px){
+    body{padding-bottom:72px;}
+    .nav-right{gap:0.7rem;}
+    .theme-label{display:none;}
+    html[data-theme="dark"] .logo-plate{padding:6px 10px;}
+    .brand .logo-mark{height:44px;}
+    .brand-text{font-size:1rem;}
+    .brand-text span{display:none;}
+    .nav-links{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;align-items:flex-start;gap:0;padding:0.5rem clamp(1.25rem,4vw,2.5rem) 1.2rem;border-bottom:1px solid var(--border);transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform 0.22s var(--ease), opacity 0.22s var(--ease);overflow-y:auto;z-index:99;}
+    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    .nav-links a{padding:1.05rem 0;width:100%;font-size:1.05rem;border-bottom:1px solid var(--border);color:var(--text);}
+    .nav-links a::after{display:none;}
+    .nav-cta-item{display:none;} /* the sticky bottom bar already offers Request a Quote on mobile — no need to repeat it here */
+    .menu-toggle{display:block;}
+    .hero{min-height:auto;padding-top:1rem;}
+    .hero-card{grid-template-columns:1fr 1fr;transform:none;margin-top:-1px;}
+    .hero-card > div{border-bottom:1px solid var(--border);}
+    .hero-spacer{display:none;}
+    .section-head{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr;}
+    .cat-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0.7rem;grid-template-columns:unset;grid-template-rows:unset;-webkit-overflow-scrolling:touch;padding-bottom:0.4rem;}
+    .cat-photos figure{flex:0 0 78%;scroll-snap-align:start;aspect-ratio:4/3;}
+    .cat-photos figure.tall{grid-row:unset;}
+    .service-row, .service-row:nth-child(even){grid-template-columns:1fr;}
+    .service-row:nth-child(even) .service-photo{order:0;}
+    .service-photo{min-height:200px;}
+    .process-track{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+
+    .mobile-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--bg-deep);padding:0.65rem clamp(1rem,4vw,1.5rem);padding-bottom:calc(0.65rem + env(safe-area-inset-bottom));gap:0.6rem;box-shadow:0 -8px 24px rgba(0,0,0,0.3);}
+    .mobile-cta a{flex:1;min-height:46px;}
+  }
+  @media (max-width:560px){
+    .hero-card{grid-template-columns:1fr;}
+    .cat-photos figure{flex:0 0 84%;}
+    .process-track{grid-template-columns:1fr;}
+    .process-track::before{display:none;}
+    .why-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+  @media (hover:none){
+    .btn-primary:hover, .btn-outline:hover, .btn-outline-light:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <span class="logo-plate"><img class="logo-mark" src="assets/logo.png" alt="Greg Energy Limited logo"></span>
+      <span class="brand-text">GREG ENERGY<span>PROCUREMENT &amp; SUPPLY</span></span>
+    </a>
+    <div class="nav-right">
+      <span class="theme-label" id="themeLabel">Dark mode</span>
+      <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="true" aria-label="Toggle light and dark theme">
+        <span class="knob">
+          <svg id="knobIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v1.5M12 19.5V21M4.6 4.6l1.1 1.1M18.3 18.3l1.1 1.1M3 12h1.5M19.5 12H21M4.6 19.4l1.1-1.1M18.3 5.7l1.1-1.1"/><circle cx="12" cy="12" r="4.6"/></svg>
+        </span>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#procurement">Procurement</a></li>
+        <li><a href="#services">Other Services</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta-item"><a href="#contact" class="btn btn-primary">Request a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-cta">
+  <a href="tel:08030992212" class="btn btn-outline-light">Call Us</a>
+  <a href="#contact" class="btn btn-primary">Request a Quote</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-bg"><img src="assets/img/hero-port.jpg" alt=""></div>
+    <div class="hero-content">
+      <div class="wrap">
+        <span class="eyebrow">Port Harcourt, Nigeria</span>
+        <h1>Sourcing and supplying the equipment industrial sites run on.</h1>
+        <p class="lede">Greg Energy Limited is a procurement and supply company for Nigeria's industrial, oil &amp; gas and construction sectors. From safety equipment and machinery to specialised site gear and beyond — supplied on a purchase order, cash or cashless.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Request a Quote</a>
+          <a href="#procurement" class="btn btn-outline-light">See What We Supply</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="hero-card">
+      <div><strong>Procurement</strong><span>Equipment &amp; supplies</span></div>
+      <div><strong>Logistics</strong><span>Haulage &amp; site delivery</span></div>
+      <div><strong>Oil &amp; Gas Services</strong><span>Field support</span></div>
+      <div><strong>General Contracts</strong><span>Industrial &amp; infrastructure</span></div>
+    </div>
+  </div>
+  <div class="hero-spacer"></div>
+
+  <!-- POSITIONING -->
+  <section class="positioning" id="about">
+    <div class="wrap">
+      <span class="kicker">Who We Are</span>
+      <p class="big">Greg Energy Limited is a procurement and supply company. We find, source and deliver the equipment industrial, oil &amp; gas and construction teams depend on — <em>reliably, on the terms that work for your project.</em></p>
+      <p class="sub">Our sourcing network isn't limited to a fixed catalogue — if it's equipment your site needs, tell us and we'll find it. We work on a purchase order, whether paid up front or on agreed terms after delivery, cash or cashless, depending on the scope. Alongside supply, we offer logistics to move what we source, oil &amp; gas field support, and general contracting for adjacent industrial work.</p>
+    </div>
+  </section>
+
+  <!-- PROCUREMENT -->
+  <section id="procurement" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="kicker">Our Core Business</span><h2>What we source and supply.</h2></div>
+        <p class="lede">Every order is quoted and confirmed against a purchase order before we source — so you know exactly what's coming, and on what terms. The categories below are examples of what we regularly supply, not the limit of what we can find.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-copy">
+          <p>We procure and supply equipment across a broad range of categories for industrial and energy-sector sites — including, but not limited to:</p>
+          <div class="cat-items">
+            <div class="cat-item"><span class="mark"></span><div><h4>Personal protective equipment</h4><p>Helmets, hi-vis coveralls, safety glasses, gloves and boots for site and field crews.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Machinery &amp; power tools</h4><p>Equipment from trusted brands including INGCO and Bosch, sourced and supplied to spec.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Scaffolding &amp; access equipment</h4><p>Frames, boards, couplers, access towers and rope access gear for height-work.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Compressors &amp; site equipment</h4><p>Air compressors and general site equipment sourced and supplied on request.</p></div></div>
+            <div class="cat-item more"><span class="mark"></span><div><h4>Anything else your site needs</h4><p>Our sourcing network covers far more than what's listed — send us your specification and we'll quote it.</p></div></div>
+          </div>
+        </div>
+        <div class="cat-photos">
+          <figure class="tall"><img src="assets/img/procurement-parts.jpg" alt="Parts and equipment stock on warehouse shelving"><figcaption>Sourcing &amp; stock</figcaption></figure>
+          <figure><img src="assets/img/ppe-vests.jpg" alt="Safety helmets and hi-vis vests"><figcaption>Safety equipment</figcaption></figure>
+          <figure><img src="assets/img/scaffolding.jpg" alt="Scaffolding structure"><figcaption>Site equipment</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="kicker">Alongside Procurement</span><h2>Logistics, field support and contracting.</h2></div>
+        <p class="lede">These services support the equipment we supply — getting it to site, backing it up in the field, and extending into adjacent contract work.</p>
+      </div>
+    </div>
+    <div class="services-list">
+      <div class="service-row">
+        <div class="service-photo"><img src="assets/img/logistics-aerial.jpg" alt="Container terminal and cranes"></div>
+        <div class="wrap service-text">
+          <h3>Logistics</h3>
+          <p>Haulage and delivery coordination for the equipment and materials we source — including route planning and handling for oversized or sensitive cargo — so orders arrive at site on schedule.</p>
+          <span class="tag">Site-to-site delivery</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-photo"><img src="assets/img/oilgas-silhouette.jpg" alt="Offshore platform silhouette at sunset"></div>
+        <div class="wrap service-text">
+          <h3>Oil &amp; Gas Services</h3>
+          <p>Light field support for operators and contractors — helping teams get the equipment, parts and consumables they need on site, backed by the same purchase-order discipline as our procurement work.</p>
+          <span class="tag">Field support</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-photo"><img src="assets/img/pipe-warehouse.jpg" alt="Steel pipe stock in a warehouse"></div>
+        <div class="wrap service-text">
+          <h3>General Contracts</h3>
+          <p>Contracting capacity for industrial and infrastructure work adjacent to our supply business — planned and resourced under the same PO-based approach.</p>
+          <span class="tag">Industrial &amp; infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="kicker">How We Work</span><h2>A clear path from enquiry to delivery.</h2></div>
+        <p class="lede">The same five-step process governs every order, so procurement, logistics and contract work all move at the same predictable pace.</p>
+      </div>
+      <div class="process-track">
+        <div class="step"><div class="dot">1</div><h4>Enquiry</h4><p>You share the item list, spec or scope — whatever it is.</p></div>
+        <div class="step"><div class="dot">2</div><h4>Quote</h4><p>We return pricing, lead times and terms.</p></div>
+        <div class="step"><div class="dot">3</div><h4>Purchase order</h4><p>Terms are confirmed and formalised.</p></div>
+        <div class="step"><div class="dot">4</div><h4>Sourcing &amp; delivery</h4><p>We source, and logistics gets it to site.</p></div>
+        <div class="step"><div class="dot">5</div><h4>Sign-off &amp; payment</h4><p>Delivery is confirmed and payment follows the agreed terms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="kicker">Why Greg Energy</span><h2>What we bring to an order.</h2></div>
+        <p class="lede">&nbsp;</p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <svg width="30" height="30" viewBox="0 0 30 30"><rect x="4" y="7" width="22" height="16" stroke="#C1272D" stroke-width="1.6" fill="none"/><path d="M4 11h22" stroke="#C1272D" stroke-width="1.6"/></svg>
+        <h3>Flexible commercial terms</h3>
+        <p>Cash or cashless, up front or on agreed terms after delivery — matched to the procurement, not forced into one template.</p>
+      </div>
+      <div class="why-card">
+        <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" stroke="#C1272D" stroke-width="1.6" fill="none"/><path d="M15 8v7l5 3" stroke="#C1272D" stroke-width="1.6" fill="none"/></svg>
+        <h3>Predictable timelines</h3>
+        <p>Every order is scoped against a purchase order, so delivery dates are set, not guessed.</p>
+      </div>
+      <div class="why-card">
+        <svg width="30" height="30" viewBox="0 0 30 30"><path d="M15 3l10 4v7c0 7-4.5 11-10 13-5.5-2-10-6-10-13V7z" stroke="#C1272D" stroke-width="1.6" fill="none"/></svg>
+        <h3>Broad sourcing reach</h3>
+        <p>Our network isn't limited to a fixed list — if it's legitimate site equipment, we'll work to source it.</p>
+      </div>
+      <div class="why-card">
+        <svg width="30" height="30" viewBox="0 0 30 30"><path d="M4 24l7-13 5 7 4-5 6 11z" stroke="#C1272D" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+        <h3>Local reach</h3>
+        <p>Nigerian-based, with supplier and logistics networks that understand site conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section-alt" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <span class="kicker">Get In Touch</span>
+        <h2>Tell us what you need sourced or moved.</h2>
+        <div class="info-block"><h4>Office</h4><p>14 Udi Street, Mile 1 Diobu<br>Port Harcourt, Rivers, Nigeria</p></div>
+        <div class="info-block"><h4>Phone</h4><p><a href="tel:08030992212">0803 099 2212</a></p></div>
+        <div class="info-block"><h4>Email</h4><p><a href="mailto:info@gregenergy.com">info@gregenergy.com</a></p></div>
+        <div class="info-block"><h4>Hours</h4><p>Monday – Friday, 8:00 – 17:00 WAT</p></div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block';">
+        <div class="form-row">
+          <div class="field"><label for="fname">Full name</label><input id="fname" type="text" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" type="text"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="email">Email</label><input id="email" type="email" required></div>
+          <div class="field"><label for="category">What do you need?</label>
+            <select id="category">
+              <option>Procurement — equipment/supplies</option>
+              <option>Logistics</option>
+              <option>Oil &amp; Gas field support</option>
+              <option>General contract</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="msg">Order details</label><textarea id="msg" required placeholder="Item, quantity, spec, timeline..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Enquiry</button>
+        <p class="form-success" style="display:none;margin-top:0.9rem;color:var(--red);font-weight:600;font-size:0.9rem;">Thank you — your enquiry has been noted. We'll respond shortly.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand"><span class="logo-chip"><img src="assets/logo.png" alt=""></span><span>GREG ENERGY LIMITED</span></div>
+      <p style="max-width:34ch;color:var(--steel);font-size:0.9rem;">Procurement and supply for industrial, oil &amp; gas and construction sites — plus logistics, field support and general contracts.</p>
+    </div>
+    <div><h5>Company</h5><ul><li><a href="#about">About</a></li><li><a href="#procurement">Procurement</a></li><li><a href="#process">How We Work</a></li></ul></div>
+    <div><h5>Services</h5><ul><li><a href="#procurement">Procurement</a></li><li><a href="#services">Logistics</a></li><li><a href="#services">Oil &amp; Gas Services</a></li><li><a href="#services">General Contracts</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:info@gregenergy.com">info@gregenergy.com</a></li><li><a href="tel:08030992212">0803 099 2212</a></li><li>Port Harcourt, Nigeria</li></ul></div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Greg Energy Limited. All rights reserved.</span>
+    <span>Powering progress responsibly.</span>
+  </div>
+</footer>
+
+<script>
+  // ---- Mobile menu ----
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  function closeMenu(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); }
+  function openMenu(){ links.classList.add('open'); toggle.setAttribute('aria-expanded','true'); document.body.classList.add('menu-open'); }
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); links.classList.contains('open') ? closeMenu() : openMenu(); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => { if (links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && links.classList.contains('open')) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900 && links.classList.contains('open')) closeMenu(); });
+
+  // ---- Theme toggle (dark default). Tries to remember choice; falls back to in-memory only. ----
+  // The header stays permanently white and the logo never changes — only the page body switches theme.
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeLabel = document.getElementById('themeLabel');
+
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    themeToggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+    themeLabel.textContent = theme === 'dark' ? 'Dark mode' : 'Light mode';
+  }
+
+  let savedTheme = null;
+  try { savedTheme = window.localStorage.getItem('ge-theme'); } catch (e) { /* storage unavailable in this preview — that's fine */ }
+  applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { window.localStorage.setItem('ge-theme', next); } catch (e) { /* ignore */ }
+  });
+</script>
+
+</body>
+</html>
