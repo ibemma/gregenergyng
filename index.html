@@ -58,30 +58,24 @@
 
   /* ============ HEADER ============ */
   /* The header follows the page theme (dark bg in dark mode, white in light mode) — it does not force one fixed color. */
-  header{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);border-top:3px solid var(--red);transition:background 0.35s var(--ease), border-color 0.35s var(--ease);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:0.65rem clamp(1.25rem,4vw,2.75rem);max-width:var(--max);margin:0 auto;gap:1rem;}
-  .brand{display:flex;align-items:center;gap:0.85rem;}
-  /* The logo file itself never changes. In dark mode its black wordmark needs a light plate behind it to stay legible —
-     that plate is a presentation choice for contrast, not an edit to the logo image. In light mode no plate is needed. */
-  .logo-plate{display:flex;align-items:center;flex:none;transition:background 0.3s var(--ease), padding 0.3s var(--ease);}
-  html[data-theme="dark"] .logo-plate{background:#fff;padding:8px 14px;box-shadow:0 6px 18px rgba(0,0,0,0.35);}
-  .brand .logo-mark{height:52px;width:auto;object-fit:contain;display:block;}
-  .brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.16rem;color:var(--text);line-height:1.15;}
-  .brand-text span{display:block;font-family:'Open Sans',sans-serif;font-weight:600;font-size:0.66rem;color:var(--text-muted);letter-spacing:0.07em;margin-top:3px;}
+  header{position:sticky;top:0;z-index:100;background:#FFFFFF;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E7E7E8;border-top:3px solid var(--red);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:0.6rem clamp(1.25rem,4vw,2.75rem);max-width:var(--max);margin:0 auto;gap:1rem;}
+  .brand{display:flex;align-items:center;gap:0.75rem;}
+  .brand .logo-mark{height:60px;width:auto;object-fit:contain;display:block;}
+  .brand-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.22rem;color:#1A1A1A;line-height:1.15;}
+  .brand-text span{display:block;font-family:'Open Sans',sans-serif;font-weight:600;font-size:0.68rem;color:#57585a;letter-spacing:0.07em;margin-top:3px;}
   .nav-right{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
-  .theme-label{font-size:0.76rem;font-weight:700;color:var(--text-muted);letter-spacing:0.02em;}
   .nav-links{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2rem);}
-  .nav-links a{font-size:0.89rem;font-weight:600;color:var(--text-muted);position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
+  .nav-links a{font-size:0.89rem;font-weight:600;color:#57585a;position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
   .nav-links a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--red);transition:width 0.3s var(--ease), left 0.3s var(--ease);}
-  .nav-links a:hover{color:var(--text);}
+  .nav-links a:hover{color:#1A1A1A;}
   .nav-links a:hover::after{width:100%;left:0;}
 
   /* Theme toggle switch */
   .theme-toggle{
     position:relative;width:52px;height:28px;border-radius:999px;
-    background:var(--bg-elevated);border:1px solid var(--border);
+    background:#F4F4F3;border:1px solid #E7E7E8;
     display:inline-flex;align-items:center;padding:2px;flex:none;
-    transition:background 0.3s var(--ease), border-color 0.3s var(--ease);
   }
   .theme-toggle .knob{
     width:22px;height:22px;border-radius:50%;background:var(--red);
@@ -113,7 +107,7 @@
   .btn-ghost:hover{color:var(--red);}
 
   .menu-toggle{display:none;background:none;border:none;padding:0.6rem;min-width:44px;min-height:44px;}
-  .menu-toggle span{display:block;width:22px;height:2px;background:var(--h-text);margin:5px 0;transition:transform 0.25s var(--ease), opacity 0.25s var(--ease);}
+  .menu-toggle span{display:block;width:22px;height:2px;background:#1A1A1A;margin:5px 0;transition:transform 0.25s var(--ease), opacity 0.25s var(--ease);}
   .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -188,7 +182,7 @@
   .service-photo{position:relative;min-height:230px;overflow:hidden;}
   .service-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 0.7s var(--ease);}
   .service-row:hover .service-photo img{transform:scale(1.06);}
-  .service-text{padding:2.1rem 0;display:flex;flex-direction:column;justify-content:center;gap:0.75rem;}
+  .service-text{padding-top:2.1rem;padding-bottom:2.1rem;display:flex;flex-direction:column;justify-content:center;gap:0.75rem;}
   .service-text h3{font-size:1.28rem;transition:color 0.25s var(--ease);}
   .service-row:hover .service-text h3{color:var(--red);}
   .service-text p{color:var(--text-muted);max-width:56ch;}
@@ -238,14 +232,15 @@
   .field textarea{resize:vertical;min-height:110px;}
   .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(193,39,45,0.15);outline:none;}
   .field select{cursor:pointer;}
+  .field input::placeholder,.field textarea::placeholder{color:var(--text-faint);opacity:1;}
+  .field option{background:var(--surface);color:var(--text);}
 
   /* Footer */
   footer{background:var(--bg-deep);color:var(--steel);padding:3.2rem 0 1.6rem;}
   .footer-grid{display:grid;grid-template-columns:1.3fr 0.8fr 0.8fr 1fr;gap:var(--gap);padding-bottom:2.4rem;border-bottom:1px solid #2a2a2a;}
-  .footer-brand{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem;}
-  .footer-brand .logo-chip{width:46px;height:46px;box-shadow:none;}
-  .footer-brand img{height:100%;width:100%;object-fit:contain;}
-  .footer-brand span{font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.02rem;}
+  .footer-brand{display:flex;gap:0.85rem;align-items:center;margin-bottom:1rem;}
+  .footer-brand img{height:48px;width:auto;object-fit:contain;}
+  .footer-brand span{font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.05rem;}
   footer h5{color:#fff;font-size:0.85rem;font-weight:700;margin-bottom:1rem;}
   footer ul li{margin-bottom:0.65rem;font-size:0.9rem;}
   footer ul li a{transition:color 0.25s var(--ease), padding-left 0.25s var(--ease);display:inline-block;}
@@ -257,14 +252,12 @@
   @media (max-width:900px){
     body{padding-bottom:72px;}
     .nav-right{gap:0.7rem;}
-    .theme-label{display:none;}
-    html[data-theme="dark"] .logo-plate{padding:6px 10px;}
-    .brand .logo-mark{height:44px;}
+    .brand .logo-mark{height:46px;}
     .brand-text{font-size:1rem;}
     .brand-text span{display:none;}
-    .nav-links{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;align-items:flex-start;gap:0;padding:0.5rem clamp(1.25rem,4vw,2.5rem) 1.2rem;border-bottom:1px solid var(--border);transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform 0.22s var(--ease), opacity 0.22s var(--ease);overflow-y:auto;z-index:99;}
+    .nav-links{position:fixed;inset:0;background:#FFFFFF;flex-direction:column;align-items:flex-start;gap:0;padding:96px clamp(1.25rem,4vw,2.5rem) 1.2rem;transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform 0.22s var(--ease), opacity 0.22s var(--ease);overflow-y:auto;z-index:99;}
     .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
-    .nav-links a{padding:1.05rem 0;width:100%;font-size:1.05rem;border-bottom:1px solid var(--border);color:var(--text);}
+    .nav-links a{padding:1.05rem 0;width:100%;font-size:1.05rem;border-bottom:1px solid #E7E7E8;color:#1A1A1A;}
     .nav-links a::after{display:none;}
     .nav-cta-item{display:none;} /* the sticky bottom bar already offers Request a Quote on mobile — no need to repeat it here */
     .menu-toggle{display:block;}
@@ -280,6 +273,7 @@
     .service-row, .service-row:nth-child(even){grid-template-columns:1fr;}
     .service-row:nth-child(even) .service-photo{order:0;}
     .service-photo{min-height:200px;}
+    .service-text{padding-top:1.5rem;padding-bottom:1.9rem;}
     .process-track{grid-template-columns:1fr 1fr;}
     .why-grid{grid-template-columns:1fr 1fr;}
     .contact-grid{grid-template-columns:1fr;}
@@ -307,11 +301,10 @@
 <header>
   <nav class="nav">
     <a href="#top" class="brand">
-      <span class="logo-plate"><img class="logo-mark" src="assets/logo.png" alt="Greg Energy Limited logo"></span>
+      <img class="logo-mark" src="assets/icon.png" alt="Greg Energy Limited">
       <span class="brand-text">GREG ENERGY<span>PROCUREMENT &amp; SUPPLY</span></span>
     </a>
     <div class="nav-right">
-      <span class="theme-label" id="themeLabel">Dark mode</span>
       <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="true" aria-label="Toggle light and dark theme">
         <span class="knob">
           <svg id="knobIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v1.5M12 19.5V21M4.6 4.6l1.1 1.1M18.3 18.3l1.1 1.1M3 12h1.5M19.5 12H21M4.6 19.4l1.1-1.1M18.3 5.7l1.1-1.1"/><circle cx="12" cy="12" r="4.6"/></svg>
@@ -522,7 +515,7 @@
 <footer>
   <div class="wrap footer-grid">
     <div>
-      <div class="footer-brand"><span class="logo-chip"><img src="assets/logo.png" alt=""></span><span>GREG ENERGY LIMITED</span></div>
+      <div class="footer-brand"><img src="assets/icon.png" alt="Greg Energy Limited"><span>GREG ENERGY LIMITED</span></div>
       <p style="max-width:34ch;color:var(--steel);font-size:0.9rem;">Procurement and supply for industrial, oil &amp; gas and construction sites — plus logistics, field support and general contracts.</p>
     </div>
     <div><h5>Company</h5><ul><li><a href="#about">About</a></li><li><a href="#procurement">Procurement</a></li><li><a href="#process">How We Work</a></li></ul></div>
@@ -551,12 +544,10 @@
   // The header stays permanently white and the logo never changes — only the page body switches theme.
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
-  const themeLabel = document.getElementById('themeLabel');
 
   function applyTheme(theme){
     root.setAttribute('data-theme', theme);
     themeToggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
-    themeLabel.textContent = theme === 'dark' ? 'Dark mode' : 'Light mode';
   }
 
   let savedTheme = null;

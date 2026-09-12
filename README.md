@@ -59,3 +59,14 @@ git push -u origin main
 - **Photos**: replace any file in `assets/img/` with a new image of the *same filename* and it'll update automatically. Keep photos under ~1600px wide and compressed (JPEG quality ~75) so the site stays fast.
 
 No build tools, frameworks, or `npm install` needed — it's just HTML, CSS, and vanilla JavaScript in one file.
+
+## Troubleshooting: images not showing
+
+If your images 404 (don't load) after deploying, it's almost always one of these:
+
+1. **The `assets` folder wasn't uploaded to the same level as `index.html`.** If you drag files into GitHub one at a time or via a nested folder, you can accidentally end up with `index.html` at the repo root but `assets/` inside a subfolder (e.g. `greg-energy-website/assets/...`). Check your repo's file list on GitHub — `index.html` and `assets` should be siblings, both directly visible at the repo root.
+2. **Case sensitivity.** GitHub Pages is case-sensitive (unlike Windows/Mac file systems). `Assets/Icon.png` is not the same as `assets/icon.png`. Keep filenames exactly as they are in this folder.
+3. **Give it a minute.** GitHub Pages can take 1–2 minutes to rebuild after a push — if you just uploaded, refresh again shortly after.
+
+If it's still not working, open your browser's dev tools (F12) → Network tab → reload the page → look for any request showing a red 404, and check the exact URL it tried to load against your repo's actual file structure.
+
