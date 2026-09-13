@@ -166,7 +166,10 @@
   .cat-item:hover{padding-left:0.9rem;background:var(--bg-elevated);}
   .cat-item .mark{flex:none;width:9px;height:9px;margin-top:0.5rem;background:var(--red);transition:transform 0.3s var(--ease);}
   .cat-item:hover .mark{transform:scale(1.5);}
-  .cat-item div h4{font-size:1.03rem;margin-bottom:0.25rem;}
+  .cat-item div h4{font-size:1.03rem;margin-bottom:0.25rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.6rem;}
+  .cat-item div h4 .tag{margin-top:0;font-size:0.68rem;}
+  .cat-item-specialty{background:rgba(193,39,45,0.07);margin:0 -0.4rem;padding-left:0.9rem;padding-right:0.9rem;border-left:2px solid var(--red);}
+  .cat-item-specialty .mark{background:var(--red);}
   .cat-item div p{color:var(--text-muted);font-size:0.92rem;}
 
   .cat-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.6rem;}
@@ -190,8 +193,9 @@
   .service-text h3{font-size:1.28rem;transition:color 0.25s var(--ease);}
   .service-row:hover .service-text h3{color:var(--red);}
   .service-text p{color:var(--text-muted);max-width:56ch;}
-  .service-text .tag{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.5rem;font-size:0.78rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.05em;width:fit-content;}
-  .service-text .tag::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;}
+  .tag{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.05em;width:fit-content;}
+  .tag::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;flex:none;}
+  .service-text .tag{margin-top:0.5rem;}
   @media (min-width:901px){
     .service-row:nth-child(even){grid-template-columns:1.4fr 0.9fr;}
     .service-row:nth-child(even) .service-photo{order:2;}
@@ -288,6 +292,7 @@
     .section-head{grid-template-columns:1fr;}
     .cat-grid{grid-template-columns:1fr;}
     .cat-photos{
+      display:block;grid-template-columns:none;grid-template-rows:none;
       position:relative;width:100%;aspect-ratio:5/4;
       overflow:hidden;border:1px solid var(--border);
       touch-action:pan-y;
@@ -422,10 +427,11 @@
         <div class="cat-copy">
           <p>We procure and supply equipment across a broad range of categories for industrial and energy-sector sites — including, but not limited to:</p>
           <div class="cat-items">
-            <div class="cat-item"><span class="mark"></span><div><h4>Personal protective equipment</h4><p>Helmets, hi-vis coveralls, safety glasses, gloves and boots for site and field crews.</p></div></div>
-            <div class="cat-item"><span class="mark"></span><div><h4>Machinery &amp; power tools</h4><p>Equipment from trusted brands including INGCO and Bosch, sourced and supplied to spec.</p></div></div>
-            <div class="cat-item"><span class="mark"></span><div><h4>Scaffolding &amp; access equipment</h4><p>Frames, boards, couplers, access towers and rope access gear for height-work.</p></div></div>
-            <div class="cat-item"><span class="mark"></span><div><h4>Compressors &amp; site equipment</h4><p>Air compressors and general site equipment sourced and supplied on request.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Personal protective equipment</h4><p>Helmets, hi-vis coveralls, safety glasses, gloves, boots and life jackets for site and field crews.</p></div></div>
+            <div class="cat-item cat-item-specialty"><span class="mark"></span><div><h4>Custom-branded PPE &amp; packaging <span class="tag">Our specialty</span></h4><p>Coveralls, helmets and cartons customised with your company's logo before delivery — in-house branding, done as part of the order, not a separate job you have to farm out.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Scaffolding &amp; clamps</h4><p>Scaffold tubes and boards, right-angle and swivel clamps, couplers and access towers for height-work.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Tools &amp; machinery</h4><p>INGCO and Bosch power tools, plus brass hammers and other non-sparking hand tools for site crews.</p></div></div>
+            <div class="cat-item"><span class="mark"></span><div><h4>Site consumables</h4><p>Welding rods, cutting and grinding discs, fasteners, and general workshop and cleaning supplies.</p></div></div>
             <div class="cat-item"><span class="mark"></span><div><h4>Anything else your site needs</h4><p>Our sourcing network covers far more than what's listed — send us your specification and we'll quote it.</p></div></div>
           </div>
         </div>
