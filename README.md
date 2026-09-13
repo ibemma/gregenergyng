@@ -10,21 +10,9 @@ assets/logo.png      company logo (transparent PNG)
 assets/img/          photography used across the site
 ```
 
-## ⚠️ Required setup: make the contact form actually send you emails
+## ✅ Contact form status
 
-Right now the contact form is wired up but pointed at a placeholder. Without this step, form submissions go nowhere. It takes about 2 minutes:
-
-1. Go to [formspree.io](https://formspree.io) and sign up for a free account using **info@gregenergyng.com**
-2. Click **New Form**, name it anything (e.g. "Greg Energy website"), and create it
-3. Formspree will send a confirmation email to info@gregenergyng.com — click the link in it to activate the form
-4. Copy the endpoint URL it gives you — it looks like `https://formspree.io/f/abcdwxyz`
-5. Open `index.html`, find this line near the Contact section:
-   ```html
-   <form class="contact-form" id="enquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-6. Replace `YOUR_FORM_ID` with your real endpoint, save, and re-upload `index.html` to GitHub
-
-Once that's done, every enquiry submitted on the site lands directly in info@gregenergyng.com's inbox. Formspree's free plan covers 50 submissions/month, which is plenty to start.
+The contact form is fully wired up and live — it's connected to your Formspree endpoint (`https://formspree.io/f/mvkojqjl`), which delivers submissions straight to whichever email you registered on Formspree. No further setup needed. Formspree's free plan covers 50 submissions/month.
 
 ## Deploy to GitHub Pages
 

@@ -70,10 +70,10 @@
   .brand-text span{display:block;font-family:'Open Sans',sans-serif;font-weight:600;font-size:0.68rem;color:#57585a;letter-spacing:0.07em;margin-top:3px;}
   .nav-right{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
   .nav-links{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2rem);}
-  .nav-links a{font-size:0.89rem;font-weight:600;color:#1A1A1A;position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
-  .nav-links a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--red);transition:width 0.3s var(--ease), left 0.3s var(--ease);}
-  .nav-links a:hover{color:var(--red);}
-  .nav-links a:hover::after{width:100%;left:0;}
+  .nav-links a:not(.btn){font-size:1rem;font-weight:700;color:#1A1A1A;position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--red);transition:width 0.3s var(--ease), left 0.3s var(--ease);}
+  .nav-links a:not(.btn):hover{color:var(--red);}
+  .nav-links a:not(.btn):hover::after{width:100%;left:0;}
 
   /* Theme toggle switch */
   .theme-toggle{
@@ -92,7 +92,7 @@
   /* Buttons — refined system */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
-    padding:0.8rem 1.6rem;font-weight:700;font-size:0.87rem;letter-spacing:0.01em;
+    padding:0.8rem 1.6rem;font-weight:700;font-size:0.92rem;letter-spacing:0.01em;
     border:1.5px solid transparent;white-space:nowrap;position:relative;
     transition:transform 0.28s var(--ease), box-shadow 0.28s var(--ease), background 0.28s var(--ease), border-color 0.28s var(--ease), color 0.28s var(--ease);
   }
@@ -258,6 +258,33 @@
 
   .mobile-cta{display:none;}
 
+  /* Enquiry confirmation modal */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;padding:1.5rem;
+    background:rgba(8,8,8,0.6);
+    backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);
+    opacity:0;visibility:hidden;
+    transition:opacity 0.25s var(--ease), visibility 0s linear 0.25s;
+  }
+  .modal-overlay.open{opacity:1;visibility:visible;transition:opacity 0.25s var(--ease);}
+  .modal-card{
+    background:var(--surface);border:1px solid var(--border);
+    max-width:420px;width:100%;padding:clamp(1.8rem,4vw,2.4rem) clamp(1.6rem,4vw,2.2rem);
+    text-align:center;box-shadow:0 30px 70px -20px rgba(0,0,0,0.55);
+    transform:translateY(14px);transition:transform 0.32s var(--ease);
+  }
+  .modal-overlay.open .modal-card{transform:translateY(0);}
+  .modal-icon{
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;
+    background:rgba(193,39,45,0.12);color:var(--red);
+  }
+  .modal-icon svg{width:26px;height:26px;}
+  .modal-card h3{font-size:1.3rem;margin-bottom:0.7rem;}
+  .modal-card p{color:var(--text-muted);font-size:0.97rem;margin-bottom:1.7rem;line-height:1.65;}
+  .modal-card p a{color:var(--red);border-bottom:1px solid var(--red);}
+
   /* Mobile full-screen menu overlay — lives outside <header> on purpose (see markup comment). */
   .mobile-menu{
     position:fixed;inset:0;z-index:95;
@@ -273,8 +300,8 @@
   .mobile-menu ul{display:flex;flex-direction:column;}
   .mobile-menu li{border-bottom:1px solid rgba(26,26,26,0.1);}
   .mobile-menu li:first-child{border-top:1px solid rgba(26,26,26,0.1);}
-  .mobile-menu a{display:block;padding:1.1rem 0.1rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.1rem;color:#1A1A1A;transition:color 0.2s var(--ease), padding-left 0.2s var(--ease);}
-  .mobile-menu a:active{color:var(--red);padding-left:0.4rem;}
+  .mobile-menu ul a{display:block;padding:1.15rem 0.1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#1A1A1A;transition:color 0.2s var(--ease), padding-left 0.2s var(--ease);}
+  .mobile-menu ul a:active{color:var(--red);padding-left:0.4rem;}
   .mobile-menu-cta{margin-top:1.8rem;width:100%;min-height:52px;}
 
   @media (max-width:900px){
@@ -545,8 +572,7 @@
         <div class="info-block"><h4>Email</h4><p><a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a></p></div>
         <div class="info-block"><h4>Hours</h4><p>Monday – Friday, 8:00 – 17:00 WAT</p></div>
       </div>
-      <!-- IMPORTANT: replace YOUR_FORM_ID below with your real Formspree endpoint — see the setup note. -->
-      <form class="contact-form" id="enquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="contact-form" id="enquiryForm" action="https://formspree.io/f/mvkojqjl" method="POST">
         <input type="hidden" name="_subject" value="New enquiry — Greg Energy website">
         <div class="form-row">
           <div class="field"><label for="fname">Full name</label><input id="fname" name="name" type="text" required></div>
@@ -566,8 +592,6 @@
         </div>
         <div class="field"><label for="msg">Order details</label><textarea id="msg" name="message" required placeholder="Item, quantity, spec, timeline..."></textarea></div>
         <button type="submit" class="btn btn-primary">Send Enquiry</button>
-        <p class="form-success" style="display:none;margin-top:0.9rem;color:var(--red);font-weight:600;font-size:0.9rem;">Thank you — your enquiry has been noted. We'll respond shortly.</p>
-        <p class="form-error" style="display:none;margin-top:0.9rem;color:var(--red);font-weight:600;font-size:0.9rem;">Something went wrong sending this. Please email us directly at <a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a>.</p>
       </form>
     </div>
   </section>
@@ -589,6 +613,15 @@
     <span>Powering progress responsibly.</span>
   </div>
 </footer>
+
+<div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <div class="modal-icon" id="modalIcon"></div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalBody"></p>
+    <button class="btn btn-primary" id="modalClose" style="width:100%;">Close</button>
+  </div>
+</div>
 
 <script>
   // ---- Auto-advancing + swipeable photo carousel (procurement gallery) ----
@@ -634,15 +667,38 @@
     dots.forEach((dot, i) => dot.style.pointerEvents = 'none'); // dots are indicators only
   }
 
-  // ---- Contact form: actually sends the enquiry (via Formspree) instead of just showing a message ----
+  // ---- Enquiry confirmation modal ----
+  const modal = document.getElementById('enquiryModal');
+  const modalIcon = document.getElementById('modalIcon');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const modalClose = document.getElementById('modalClose');
+
+  const CHECK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+  const ALERT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>';
+
+  function openModal(kind){
+    if (kind === 'success') {
+      modalIcon.innerHTML = CHECK_ICON;
+      modalTitle.textContent = 'Enquiry received';
+      modalBody.textContent = "Thank you for reaching out. Your enquiry has been received, and a member of our team will get back to you shortly.";
+    } else {
+      modalIcon.innerHTML = ALERT_ICON;
+      modalTitle.textContent = "We couldn't send that";
+      modalBody.innerHTML = 'Something went wrong on our end. Please reach us directly at <a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a> and we\'ll take it from there.';
+    }
+    modal.classList.add('open');
+  }
+  function closeModal(){ modal.classList.remove('open'); }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  // ---- Contact form: actually sends the enquiry (via Formspree) and shows the modal above ----
   const enquiryForm = document.getElementById('enquiryForm');
   if (enquiryForm) {
     enquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const successEl = enquiryForm.querySelector('.form-success');
-      const errorEl = enquiryForm.querySelector('.form-error');
-      successEl.style.display = 'none';
-      errorEl.style.display = 'none';
       const submitBtn = enquiryForm.querySelector('button[type="submit"]');
       const originalLabel = submitBtn.textContent;
       submitBtn.textContent = 'Sending…';
@@ -655,12 +711,12 @@
         });
         if (res.ok) {
           enquiryForm.reset();
-          successEl.style.display = 'block';
+          openModal('success');
         } else {
-          errorEl.style.display = 'block';
+          openModal('error');
         }
       } catch (err) {
-        errorEl.style.display = 'block';
+        openModal('error');
       } finally {
         submitBtn.textContent = originalLabel;
         submitBtn.disabled = false;
