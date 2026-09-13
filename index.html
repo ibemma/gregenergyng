@@ -70,9 +70,9 @@
   .brand-text span{display:block;font-family:'Open Sans',sans-serif;font-weight:600;font-size:0.68rem;color:#57585a;letter-spacing:0.07em;margin-top:3px;}
   .nav-right{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
   .nav-links{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2rem);}
-  .nav-links a{font-size:0.89rem;font-weight:600;color:#57585a;position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
+  .nav-links a{font-size:0.89rem;font-weight:600;color:#1A1A1A;position:relative;padding:0.35rem 0.1rem;transition:color 0.25s var(--ease);}
   .nav-links a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--red);transition:width 0.3s var(--ease), left 0.3s var(--ease);}
-  .nav-links a:hover{color:#1A1A1A;}
+  .nav-links a:hover{color:var(--red);}
   .nav-links a:hover::after{width:100%;left:0;}
 
   /* Theme toggle switch */
@@ -389,7 +389,7 @@
       <div class="wrap">
         <span class="eyebrow">Port Harcourt, Nigeria</span>
         <h1>Sourcing and supplying the equipment industrial sites run on.</h1>
-        <p class="lede">Greg Energy Limited is a procurement and supply company for Nigeria's industrial, oil &amp; gas and construction sectors. From safety equipment and machinery to specialised site gear and beyond — supplied on a purchase order, cash or cashless.</p>
+        <p class="lede">Greg Energy Limited is a procurement and supply company for Nigeria's industrial, oil &amp; gas and construction sectors. From safety equipment and machinery to scaffolding, tools and site consumables — supplied on a purchase order, cash or cashless.</p>
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary">Request a Quote</a>
           <a href="#procurement" class="btn btn-outline-light">See What We Supply</a>
@@ -428,7 +428,7 @@
           <p>We procure and supply equipment across a broad range of categories for industrial and energy-sector sites — including, but not limited to:</p>
           <div class="cat-items">
             <div class="cat-item"><span class="mark"></span><div><h4>Personal protective equipment</h4><p>Helmets, hi-vis coveralls, safety glasses, gloves, boots and life jackets for site and field crews.</p></div></div>
-            <div class="cat-item cat-item-specialty"><span class="mark"></span><div><h4>Custom-branded PPE &amp; packaging <span class="tag">Our specialty</span></h4><p>Coveralls, helmets and cartons customised with your company's logo before delivery — in-house branding, done as part of the order, not a separate job you have to farm out.</p></div></div>
+            <div class="cat-item cat-item-specialty"><span class="mark"></span><div><h4>Custom-branded PPE &amp; packaging <span class="tag">Our specialty</span></h4><p>Coveralls, helmets and packaging branded with your company's logo before delivery — handled in-house, so branding is part of the order rather than a separate step you have to manage yourself.</p></div></div>
             <div class="cat-item"><span class="mark"></span><div><h4>Scaffolding &amp; clamps</h4><p>Scaffold tubes and boards, right-angle and swivel clamps, couplers and access towers for height-work.</p></div></div>
             <div class="cat-item"><span class="mark"></span><div><h4>Tools &amp; machinery</h4><p>INGCO and Bosch power tools, plus brass hammers and other non-sparking hand tools for site crews.</p></div></div>
             <div class="cat-item"><span class="mark"></span><div><h4>Site consumables</h4><p>Welding rods, cutting and grinding discs, fasteners, and general workshop and cleaning supplies.</p></div></div>
@@ -524,7 +524,7 @@
       <div class="why-card">
         <svg width="30" height="30" viewBox="0 0 30 30"><path d="M15 3l10 4v7c0 7-4.5 11-10 13-5.5-2-10-6-10-13V7z" stroke="#C1272D" stroke-width="1.6" fill="none"/></svg>
         <h3>Broad sourcing reach</h3>
-        <p>Our network isn't limited to a fixed list — if it's legitimate site equipment, we'll work to source it.</p>
+        <p>Our network isn't limited to a fixed list — if it's equipment your site needs, we'll work to source it.</p>
       </div>
       <div class="why-card">
         <svg width="30" height="30" viewBox="0 0 30 30"><path d="M4 24l7-13 5 7 4-5 6 11z" stroke="#C1272D" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
@@ -542,18 +542,20 @@
         <h2>Tell us what you need sourced or moved.</h2>
         <div class="info-block"><h4>Office</h4><p>104 Trans Amadi Layout<br>Port Harcourt, Rivers State, Nigeria</p></div>
         <div class="info-block"><h4>Phone</h4><p><a href="tel:09061592162">0906 159 2162</a></p></div>
-        <div class="info-block"><h4>Email</h4><p><a href="mailto:info@gregenergy.com">info@gregenergy.com</a></p></div>
+        <div class="info-block"><h4>Email</h4><p><a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a></p></div>
         <div class="info-block"><h4>Hours</h4><p>Monday – Friday, 8:00 – 17:00 WAT</p></div>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block';">
+      <!-- IMPORTANT: replace YOUR_FORM_ID below with your real Formspree endpoint — see the setup note. -->
+      <form class="contact-form" id="enquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry — Greg Energy website">
         <div class="form-row">
-          <div class="field"><label for="fname">Full name</label><input id="fname" type="text" required></div>
-          <div class="field"><label for="company">Company</label><input id="company" type="text"></div>
+          <div class="field"><label for="fname">Full name</label><input id="fname" name="name" type="text" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" type="text"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="email">Email</label><input id="email" type="email" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
           <div class="field"><label for="category">What do you need?</label>
-            <select id="category">
+            <select id="category" name="category">
               <option>Procurement — equipment/supplies</option>
               <option>Logistics</option>
               <option>Oil &amp; Gas field support</option>
@@ -562,9 +564,10 @@
             </select>
           </div>
         </div>
-        <div class="field"><label for="msg">Order details</label><textarea id="msg" required placeholder="Item, quantity, spec, timeline..."></textarea></div>
+        <div class="field"><label for="msg">Order details</label><textarea id="msg" name="message" required placeholder="Item, quantity, spec, timeline..."></textarea></div>
         <button type="submit" class="btn btn-primary">Send Enquiry</button>
         <p class="form-success" style="display:none;margin-top:0.9rem;color:var(--red);font-weight:600;font-size:0.9rem;">Thank you — your enquiry has been noted. We'll respond shortly.</p>
+        <p class="form-error" style="display:none;margin-top:0.9rem;color:var(--red);font-weight:600;font-size:0.9rem;">Something went wrong sending this. Please email us directly at <a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a>.</p>
       </form>
     </div>
   </section>
@@ -579,7 +582,7 @@
     </div>
     <div><h5>Company</h5><ul><li><a href="#about">About</a></li><li><a href="#procurement">Procurement</a></li><li><a href="#process">How We Work</a></li></ul></div>
     <div><h5>Services</h5><ul><li><a href="#procurement">Procurement</a></li><li><a href="#services">Logistics</a></li><li><a href="#services">Oil &amp; Gas Services</a></li><li><a href="#services">General Contracts</a></li></ul></div>
-    <div><h5>Contact</h5><ul><li><a href="mailto:info@gregenergy.com">info@gregenergy.com</a></li><li><a href="tel:09061592162">0906 159 2162</a></li><li>Port Harcourt, Nigeria</li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:info@gregenergyng.com">info@gregenergyng.com</a></li><li><a href="tel:09061592162">0906 159 2162</a></li><li>Port Harcourt, Nigeria</li></ul></div>
   </div>
   <div class="wrap foot-bottom">
     <span>© 2026 Greg Energy Limited. All rights reserved.</span>
@@ -629,6 +632,40 @@
     });
 
     dots.forEach((dot, i) => dot.style.pointerEvents = 'none'); // dots are indicators only
+  }
+
+  // ---- Contact form: actually sends the enquiry (via Formspree) instead of just showing a message ----
+  const enquiryForm = document.getElementById('enquiryForm');
+  if (enquiryForm) {
+    enquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const successEl = enquiryForm.querySelector('.form-success');
+      const errorEl = enquiryForm.querySelector('.form-error');
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+      const submitBtn = enquiryForm.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(enquiryForm.action, {
+          method: 'POST',
+          body: new FormData(enquiryForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          enquiryForm.reset();
+          successEl.style.display = 'block';
+        } else {
+          errorEl.style.display = 'block';
+        }
+      } catch (err) {
+        errorEl.style.display = 'block';
+      } finally {
+        submitBtn.textContent = originalLabel;
+        submitBtn.disabled = false;
+      }
+    });
   }
 
   // ---- Mobile menu ----
